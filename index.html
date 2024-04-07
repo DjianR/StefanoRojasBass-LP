@@ -36,8 +36,15 @@
 	Custom Stylesheet
 	=============================================== -->
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<!-- ==============================================
+	Scripts
+	=============================================== -->
+	<script src="js/format-google-calendar.js"></script>
+	<script src="js/vendor/modernizr.min.js"></script>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XR5Q425VJK"></script>
+
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
@@ -46,7 +53,24 @@
 		gtag('config', 'G-XR5Q425VJK');
 	</script>
 
-	<script src="js/vendor/modernizr.min.js"></script>
+	    <!-- formatGoogleCalendar -->
+			<script>
+			formatGoogleCalendar.init({
+					calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/paujivrkk0m017gp3g31hv0uuo@group.calendar.google.com/events?key=AIzaSyD49G_bQvuqMDziU4w2978LpAPucNu82nk',
+					past: true,
+					upcoming: true,
+					sameDayTimes: true,
+					pastTopN: 4,
+					upcomingTopN: 6,
+					itemsTagName: 'a href="https://calendar.google.com/calendar/embed?src=paujivrkk0m017gp3g31hv0uuo%40group.calendar.google.com&ctz=America/Santiago&mode=AGENDA" onclick="return ! window.open(this.href);" class="list-group-item"',
+					upcomingSelector: '#events-upcoming',
+					pastSelector: '#events-past',
+					upcomingHeading: '<h2>Próximos eventos</h2>',
+					pastHeading: '<h3>Eventos Pasados</h3>',
+					format: ['*date*', ': ', '*summary*', '<br> || ', '*description*', '|| <br>','<br> en ', '*location*']
+	});
+	
+			</script>
 
 </head>
 
