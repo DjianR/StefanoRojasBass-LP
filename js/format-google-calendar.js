@@ -53,7 +53,7 @@ var formatGoogleCalendar = (function() {
             }
 
             for (i in result) {
-
+                // console.log(result);
                 if (isPast(result[i].end.dateTime || result[i].end.date)) {
                     if (pastCounter < settings.pastTopN) {
                        pastResult.push(result[i]);
@@ -117,10 +117,15 @@ var formatGoogleCalendar = (function() {
             dateFormatted = getFormattedDate(dateStart, dateEnd),
             output = '<' + tagName + '>',
             summary = result.summary || '',
+            day = dateStart[0],
+            month = getMonthName(dateStart[1]) ,
+            hour = dateStart[3] + ':' + dateStart[4]+(dateStart[4]==0?'0':''),
             description = result.description || '',
             location = result.location || '',
-            i;
+            addEventLink = getAddEventLink(result.htmlLink, result.organizer.email, result.summary, result.start.dateTime, result.description, result.location) || '',
 
+            i;
+        
         for (i = 0; i < format.length; i++) {
 
             format[i] = format[i].toString();
@@ -129,24 +134,81 @@ var formatGoogleCalendar = (function() {
                 output = output.concat('<strong> <span class="summary">' + summary.toUpperCase() + '</span> </strong>');
             } else if (format[i] === '*date*') {
                 output = output.concat('<span class="date">' + dateFormatted + '</span>');
+            } else if (format[i] === '*day*') {
+                output = output.concat('<span class="day">' + day + '</span>');
+            } else if (format[i] === '*month*') {
+                output = output.concat('<span class="month">' + month + '</span>');
+            } else if (format[i] === '*hour*') {
+                output = output.concat('<span class="hour">' + hour + '</span>');
             } else if (format[i] === '*description*') {
                 output = output.concat('<span class="description">' +  description + '</span>');
             } else if (format[i] === '*location*') {
                 output = output.concat('<em><span class="location">' + location + '</span></em>');
-            } else {
+            } else if (format[i] === '*addEventLink*') {
+                output = output.concat(addEventLink);
+            }
+            else {
                 if ((format[i + 1] === '*location*' && location !== '') ||
                     (format[i + 1] === '*summary*' && summary !== '') ||
                     (format[i + 1] === '*date*' && dateFormatted !== '') ||
-                    (format[i + 1] === '*description*' && description !== '')) {
+                    (format[i + 1] === '*day*' && day !== '') ||
+                    (format[i + 1] === '*month*' && month !== '') ||
+                    (format[i + 1] === '*hour*' && hour !== '') ||
+                    (format[i + 1] === '*description*' && description !== '') ||
+                    (format[i + 1] === '*addEventLink*' && addEventLink !== '') ) {
 
                     output = output.concat(format[i]);
                 }
             }
         }
 
-        return output + '</' + tagName + '>';
+        return output ;
     };
 
+    var getAddEventLink = function (eventLink, organizerEmail, summary, dateTime, details, location){
+        var linkPrefix = 'https://calendar.google.com/calendar/event?action=TEMPLATE'
+        // var tmeid = '&tmeid=' + (eventLink.split('?eid='))[1];
+        // var tmsrc = '&tmsrc=' + organizerEmail;
+        // var linkSuffix = '&catt=false&pprop=HowCreated:DUPLICATE&hl=es-419&scp=ONE'
+        
+        // var addEventLink = linkPrefix + tmeid + tmsrc + linkSuffix;
+        var title = '&text='+summary.replace(/ /g, '%20');
+        var date = '&dates=' + getUTCTime(dateTime);
+        var description = '&details='+ details.replace(/ /g, '%20');
+        var geo = '&location=' + location.replace(/ /g, '+');
+        var linkSuffix = '&sf=true&output=xml&ctz=America%2FSantiago'
+
+        var addEventLink = linkPrefix + title + date + description + geo + linkSuffix;
+
+        // console.log('la hora del evento: ' + getDateInfo(dateTime));
+        // console.log(getUTCTime(dateTime));
+        // console.log("link de evento");
+        // console.log(addEventLink);
+        return addEventLink;
+    }
+
+    var getUTCTime = function(date){
+        let [day, month, year, hour, minutes] = [...getDateInfo(date)];
+        if (day.toString().length<2){
+            day = '0'+ day.toString();
+        }
+        if (month.toString().length<2){
+            console.log('mes:' + month);
+            month = '0'+month.toString();
+        }
+        if (hour.toString().length<2){
+            hour = '0'+hour.toString();
+        }
+        if (minutes.toString().length<2){
+            minutes = '0'+minutes.toString();
+        }
+        var hour2 = hour + 1;
+        let startHour = (year.toString()+month.toString()+day.toString()+'T'+hour+minutes+'00');
+        let endHour = (year.toString()+month.toString()+day.toString()+'T'+hour2+minutes+'00');
+
+        return startHour+'CL/'+endHour+'CL';
+
+    }
     //Check if date is later then now
     var isPast = function(date) {
         var compareDate = new Date(date),
@@ -283,7 +345,7 @@ var formatGoogleCalendar = (function() {
                 sameDayTimes: true,
                 pastTopN: -1,
                 upcomingTopN: -1,
-                itemsTagName: 'li',
+                // itemsTagName: 'li',
                 upcomingSelector: '#events-upcoming',
                 pastSelector: '#events-past',
                 upcomingHeading: '<h2>Upcoming events</h2>',
