@@ -1,0 +1,67 @@
+created
+: 
+"2024-04-09T04:23:31.000Z"
+creator
+: 
+{email: 'stefano.rojas@gmail.com'}
+description
+: 
+"Va a estar buenote"
+end
+: 
+{dateTime: '2024-04-09T17:00:00-04:00', timeZone: 'America/Santiago'}
+etag
+: 
+"\"3425274515252000\""
+eventType
+: 
+"default"
+htmlLink
+: 
+"https://www.google.com/calendar/event?eid=NnNyajhjcjE2Z3M2Y2JiNGNvczMyYjlrY2dxMzZiOXBjZ3MzMmI5bDZoaTNhZGhnY2RnajBjaGs3MCBwYXVqaXZya2swbTAxN2dwM2czMWh2MHV1b0Bn"
+iCalUID
+: 
+"6srj8cr16gs6cbb4cos32b9kcgq36b9pcgs32b9l6hi3adhgcdgj0chk70@google.com"
+id
+: 
+"6srj8cr16gs6cbb4cos32b9kcgq36b9pcgs32b9l6hi3adhgcdgj0chk70"
+kind
+: 
+"calendar#event"
+location
+: 
+"Talca"
+organizer
+: 
+{email: 'paujivrkk0m017gp3g31hv0uuo@group.calendar.google.com', displayName: 'Eventos Stefano Rojas', self: true}
+sequence
+: 
+0
+start
+: 
+{dateTime: '2024-04-09T12:30:00-04:00', timeZone: 'America/Santiago'}
+status
+: 
+"confirmed"
+summary
+: 
+"Concierto Privado"
+updated
+: 
+"2024-04-09T04:34:17.626Z"
+
+https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NnNyajhjcjE2Z3M2Y2JiNGNvczMyYjlrY2dxMzZiOXBjZ3MzMmI5bDZoaTNhZGhnY2RnajBjaGs3MCBwYXVqaXZya2swbTAxN2dwM2czMWh2MHV1b0Bn&tmsrc=paujivrkk0m017gp3g31hv0uuo@group.calendar.google.com&catt=false&pprop=HowCreated:DUPLICATE&hl=es-419&scp=ONE
+https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NnNyajhjcjE2Z3M2Y2JiNGNvczMyYjlrY2dxMzZiOXBjZ3MzMmI5bDZoaTNhZGhnY2RnajBjaGs3MCBwYXVqaXZya2swbTAxN2dwM2czMWh2MHV1b0Bn&tmsrc=paujivrkk0m017gp3g31hv0uuo@group.calendar.google.com&catt=false&pprop=HowCreated:DUPLICATE&hl=es-419&scp=ONE
+
+https://calendar.google.com/calendar/u/0/r/eventedit/duplicate/MjAyNDA1MDFfMm5xdjl1MDZsbG5iZnUxbzN1YzV2Z2ZjY28gZXMuY2wjaG9saWRheUB2
+https://calendar.google.com/calendar/u/0/r/eventedit/copy/NnNyajhjcjE2Z3M2Y2JiNGNvczMyYjlrY2dxMzZiOXBjZ3MzMmI5bDZoaTNhZGhnY2RnajBjaGs3MCBwYXVqaXZya2swbTAxN2dwM2czMWh2MHV1b0Bn/ZmVsaXBlLmdub0BnbWFpbC5jb20?catt=false&pprop=HowCreated:DUPLICATE&hl=es-419&scp=ONE
+https://calendar.google.com/calendar/eventedit/duplicate/MjAyNDA1MDFfMm5xdjl1MDZsbG5iZnUxbzN1YzV2Z2ZjY28gZXMuY2wjaG9saWRheUB2
+
+https://calendar.google.com/calendar/u/0/r/eventedit/duplicate/NnNyajhjcjE2Z3M2Y2JiNGNvczMyYjlrY2dxMzZiOXBjZ3MzMmI5bDZoaTNhZGhnY2RnajBjaGs3MCBwYXVqaXZya2swbTAxN2dwM2czMWh2MHV1b0Bn/ZmVsaXBlLmdub0BnbWFpbC5jb20
+
+https://www.google.com/calendar/render?action=TEMPLATE
+&text=Your+Event+Name
+&dates=20140127T224000Z/20140320T221500Z
+&details=For+details,+link+here:+http://www.example.com
+&location=Waldorf+Astoria,+301+Park+Ave+,+New+York,+NY+10022
+&sf=true&output=xml
