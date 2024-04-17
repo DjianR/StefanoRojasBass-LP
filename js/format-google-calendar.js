@@ -344,7 +344,7 @@ var formatGoogleCalendar = (function() {
                 sameDayTimes: true,
                 pastTopN: -1,
                 upcomingTopN: -1,
-                // itemsTagName: 'li',
+                itemsTagName: 'div class="box-event"',
                 upcomingSelector: '#events-upcoming',
                 pastSelector: '#events-past',
                 upcomingHeading: '<h2>Upcoming events</h2>',
