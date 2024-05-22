@@ -3557,11 +3557,11 @@ Back To Top Section
         .box-event .body-content .detail-event {
           margin-top: 20px; } }
 
-.list-events .box-event {
+.list-events  .box-event {
   /*background-color: lighten($color-secondary, 20%);*/ }
-  .list-events .box-event:nth-child(2n) {
+  .list-events  .box-event:nth-child(2n) {
     background-color: #333333; }
-    .list-events .box-event:nth-child(2n) .meta-date {
+    .list-events  .box-event:nth-child(2n) .meta-date {
       background-color: #0d0d0d; }
 
 /**

@@ -24,7 +24,6 @@ var formatGoogleCalendar = (function() {
                     result.push(item);
                 }
             });
-
             result.sort(comp).reverse();
 
             var pastCounter = 0,
@@ -120,12 +119,12 @@ var formatGoogleCalendar = (function() {
             day = dateStart[0],
             month = getMonthName(dateStart[1]) ,
             hour = dateStart[3] + ':' + dateStart[4]+(dateStart[4]==0?'0':''),
-            description = result.description || '',
+            description = result.description || ' ',
             location = result.location || '',
             addEventLink = getAddEventLink(result.htmlLink, result.organizer.email, result.summary, result.start.dateTime, result.description, result.location) || '',
-
+            
             i;
-        
+        console.log(result);
         for (i = 0; i < format.length; i++) {
 
             format[i] = format[i].toString();
@@ -174,13 +173,13 @@ var formatGoogleCalendar = (function() {
         // var addEventLink = linkPrefix + tmeid + tmsrc + linkSuffix;
         var title = '&text='+summary.replace(/ /g, '%20');
         var date = '&dates=' + getUTCTime(dateTime);
-        var description = '&details='+ details.replace(/ /g, '%20');
+        var description = details?'&details='+ details.replace(/ /g, '%20'): ''
         var geo = '&location=' + location.replace(/ /g, '+');
         var linkSuffix = '&sf=true&output=xml&ctz=America%2FSantiago'
 
         var addEventLink = linkPrefix + title + date + description + geo + linkSuffix;
 
-        // console.log('la hora del evento: ' + getDateInfo(dateTime));
+         console.log('la hora del evento: ' + getDateInfo(dateTime));
         // console.log(getUTCTime(dateTime));
         // console.log("link de evento");
         // console.log(addEventLink);
@@ -345,7 +344,7 @@ var formatGoogleCalendar = (function() {
                 sameDayTimes: true,
                 pastTopN: -1,
                 upcomingTopN: -1,
-                // itemsTagName: 'li',
+                itemsTagName: 'div class="box-event"',
                 upcomingSelector: '#events-upcoming',
                 pastSelector: '#events-past',
                 upcomingHeading: '<h2>Upcoming events</h2>',
